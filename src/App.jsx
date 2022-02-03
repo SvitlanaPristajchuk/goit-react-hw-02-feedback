@@ -30,15 +30,7 @@ import Button from './components/Button/Button';
     return (
       <>
       <Header title="Please leave feedback"/>
-      <button type="button" onClick={this.handleClickButtonG}>
-       Good {}
-        </button>
-        <button type="button" onClick={this.handleClickButtonN }>
-        Neutral {}
-        </button>
-        <button type="button" onClick={this.handleClickButtonB }>
-        Bad {}
-        </button>
+      <Button type="button" onClick={}/>
       <Header title="Statistics"/>
       <ul>
         <li> Good:</li>

@@ -9,6 +9,15 @@ class Button  extends Component {
             button type="button" onClick={this.handleClickButtonG}>
             Good {}
              </button>
+             <button type="button" onClick={this.handleClickButtonG}>
+             Good {}
+              </button>
+              <button type="button" onClick={this.handleClickButtonN }>
+              Neutral {}
+              </button>
+              <button type="button" onClick={this.handleClickButtonB }>
+              Bad {}
+              </button>
         );
     };
 
