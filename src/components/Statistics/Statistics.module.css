@@ -1,0 +1,17 @@
+.options {
+    width: 1200px;
+    
+   
+  }
+  
+  .button {
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  button:hover,
+  button:focus {
+    background-color: turquoise;
+  }
