@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Header from './components/Header/Header';
 import Statistics from './components/Statistics/Statistics';
-import Button from './components/Button/Button';
+import s from './App.module.css';
 import PropTypes from 'prop-types';
+
 
 
  class App  extends Component {
@@ -12,25 +13,11 @@ import PropTypes from 'prop-types';
    bad: 0
   }
  
-  handleAdd1 = () => {
-    this.setState((prevState) => {
-      return { good: prevState.good + 1 }
+  handleBtnClick = key => {
+  this.setState(prevState => {
+   return {[key]:prevState[key]+1};
     });
-  };
-
-
-  handleAdd2 = () => {
-    this.setState((prevState) => {
-      return { neutral: prevState.neutral + 1 }
-    });
-  };
-
-  handleAdd3 = () => {
-    this.setState((prevState) => {
-      return { bad: prevState.bad + 1 }
-    });
-  };
-
+  }
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + bad + neutral;
@@ -45,19 +32,28 @@ import PropTypes from 'prop-types';
 
    render () {
     const { good, neutral, bad } = this.state;
-   //const positivFeedback = this.countPositiveFeedbackPercentage;
-   //const totalFeedback = this.countTotalFeedback;
+   const totalFeedback = this.countTotalFeedback;
     return (
       <>
       <Header title="Please leave feedback"/>
-      <Button onAdd1={this.handleAdd1} onAdd2={this.handleAdd2} onAdd3={this.handleAdd3}/>
+      {Object.keys(this.state).map(key => (
+      <button className={s.button}
+      key={key} 
+      type="button" 
+      onClick={() => this.handleBtnClick(key)}>
+        {key}
+      </button>
+      ))}
+
+ 
+
       <Header title="Statistics"/>
        <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
             total={good + neutral + bad}
-            positiveFeedbackPercentage={(good + neutral + bad) ? Math.round((good / (good + neutral + bad)) * 100) : 0}
+            positiveFeedbackPercentage={(totalFeedback) ? Math.round((good/ (good + neutral + bad)) * 100) : 0}
           /> 
     </>
     ) 
@@ -66,6 +62,7 @@ import PropTypes from 'prop-types';
  Statistics.propTypes = {
   good: PropTypes.number,
   neutral: PropTypes.number,
-   bad: PropTypes.number,
+  bad: PropTypes.number,
+ 
  };
 export default App;
