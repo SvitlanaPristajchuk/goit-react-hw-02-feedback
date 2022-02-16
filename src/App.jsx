@@ -32,7 +32,8 @@ import PropTypes from 'prop-types';
 
    render () {
     const { good, neutral, bad } = this.state;
-   const totalFeedback = this.countTotalFeedback;
+    const totalFeedback = this.countTotalFeedback();
+    const positivFeedback = this.countPositiveFeedbackPercentage();
     return (
       <>
       <Header title="Please leave feedback"/>
@@ -52,8 +53,8 @@ import PropTypes from 'prop-types';
             good={good}
             neutral={neutral}
             bad={bad}
-            total={good + neutral + bad}
-            positiveFeedbackPercentage={(totalFeedback) ? Math.round((good/ (good + neutral + bad)) * 100) : 0}
+            total={totalFeedback}
+            positiveFeedbackPercentage= {positivFeedback}
           /> 
     </>
     ) 
