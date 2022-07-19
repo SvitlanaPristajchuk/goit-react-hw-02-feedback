@@ -54,7 +54,7 @@ import PropTypes from 'prop-types';
             neutral={neutral}
             bad={bad}
             total={totalFeedback}
-            positiveFeedbackPercentage= {positivFeedback}
+            positivePercentage= {positivFeedback}
           /> 
     </>
     ) 
