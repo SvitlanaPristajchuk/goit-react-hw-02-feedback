@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import Header from './components/Header/Header';
+import React, { Component } from 'react'
 import Statistics from './components/Statistics/Statistics';
-import s from './App.module.css';
 import PropTypes from 'prop-types';
+import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
+import Section from './components/Section/Section';
+
+
 
 
 
@@ -36,20 +38,12 @@ import PropTypes from 'prop-types';
     const positivFeedback = this.countPositiveFeedbackPercentage();
     return (
       <>
-      <Header title="Please leave feedback"/>
-      {Object.keys(this.state).map(key => (
-      <button className={s.button} 
-      key={key} 
-      type="button" 
-      onClick={() => this.handleBtnClick(key)}>
-        {key}
-      </button>
-      ))}
-
- 
-
-      <Header title="Statistics"/>
-       <Statistics
+      <Section title="Please leave feedback"/>
+      <FeedbackOptions 
+     options={Object.keys(this.state)} 
+     onLeaveFeedback={this.handleBtnClick} />
+      <Section title="Statistics"/>
+      <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
