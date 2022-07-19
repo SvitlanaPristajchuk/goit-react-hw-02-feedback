@@ -38,7 +38,7 @@ import PropTypes from 'prop-types';
       <>
       <Header title="Please leave feedback"/>
       {Object.keys(this.state).map(key => (
-      <button className={s.button}
+      <button className={s.button} 
       key={key} 
       type="button" 
       onClick={() => this.handleBtnClick(key)}>
